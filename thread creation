@@ -1,0 +1,37 @@
+   public class ThreadDemo {
+ 2   public static void main(String[] args) {
+ 3   // Create a new thread using a lambda expression
+ 4   Thread thread1 = new Thread(()->{
+ 5   System.out.println(Thread.currentThread().getName() + " is running.");
+ 6   try {
+ 7   Thread.sleep(2000); // Sleep for 2 seconds
+ 8   } catch (InterruptedException e) {
+ 9   e.printStackTrace();
+ 10   }
+ 11   System.out.println(Thread.currentThread().getName() + " has completed.");
+ 12   }, "MyThread1");
+ 13   
+14   // Start the thread
+ 15   thread1.start();
+ 16   
+17   // Check if the thread is alive
+ 18   System.out.println("Is " + thread1.getName() + " alive? " + thread1.isAlive());
+ 19   
+20   try {
+ 21   // Join the thread, wait for it to complete
+ 22   thread1.join();
+ 23   } catch (InterruptedException e) {
+ 24   e.printStackTrace();
+ 25   }
+ 26   
+27   // Check if the thread is alive after joining
+ 28   System.out.println("Is " + thread1.getName() + " alive after joining? " + thread1
+ .isAlive());
+ 29   
+30   // Get and set the thread priority
+ 31   System.out.println(thread1.getName() + " priority: " + thread1.getPriority());
+ 32   thread1.setPriority(Thread.MAX_PRIORITY);
+ 33   System.out.println(thread1.getName() + " priority after setting to MAX_PRIORITY: 
+" + thread1.getPriority());
+ 34   }
+ 35   }
